@@ -1,2 +1,4 @@
 rootProject.name = 'CMA_test'
+include '02-WorkWithDataBase'
+
 
