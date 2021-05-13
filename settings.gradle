@@ -1,3 +1,4 @@
 rootProject.name = 'CMA_test'
-include '01-TextFileSearch'
 
+include '01-TextFileSearch'
+include '02-WorkWithDataBase'

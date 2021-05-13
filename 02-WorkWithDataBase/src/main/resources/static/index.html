@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Страница пользователей</title>
+
+    <script src="/webjars/jquery/2.2.4/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/1.1.2/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
+    <script src="/app.js">
+    </script>
+</head>
+
+<body>
+<br/>
+<div>
+    <button id="connect" onclick="connect()">Connect</button>
+    <button id="disconnect" onclick="disconnect()" disabled="disabled">Disconnect</button>
+</div>
+
+<form id="create-form" accept-charset="utf-8">
+    <h1>Create new student:</h1>
+    <table style="width: 350px; border: solid 0px;">
+        <td><label>First name </label></td>
+        <td><input type="text" id="firstName" value="" placeholder="Enter name" disabled></td>
+        <tr></tr>
+        <td><label>Second name </label></td>
+        <td><input type="text" id="secondName" value="" placeholder="Enter name" disabled></td>
+        <tr></tr>
+        <td><label>Middle name </label></td>
+        <td><input type="text" id="middleName" value="" placeholder="Enter name" disabled></td>
+        <tr></tr>
+
+        <td><label>Date of birth </label></td>
+        <td><input type="text" id="dateOfBirth" value="" placeholder="YYYY-MM-DD" disabled></td>
+        <tr></tr>
+        <tr></tr>
+        <td><label>Student group </label></td>
+        <td><input type="text" id="studentGroup" value="" placeholder="Enter student group" disabled></td>
+        <tr></tr>
+        <td>
+            <button type="button" id="sendRegister" onclick="sendMsgRegister()" disabled>Add</button>
+        </td>
+        <td>
+            <button type="button" id="sendShowAll" onclick="sendMsgAll()" disabled>Refresh/Show all</button>
+        </td>
+        <tr></tr>
+        <td>
+            <button type="button" id="sendUpdate" onclick="sendMsgUpdate()" disabled>Update (by ID)</button>
+        </td>
+        <tr></tr>
+        <td>
+            <button type="button" id="sendDelete" onclick="sendMsgDelete()" disabled>Delete (by ID)</button>
+        </td>
+        <td>
+            <input type="text" id="deleteStudentById" value="" placeholder="Enter ID for update/delete" disabled>
+        </td>
+    </table>
+</form>
+<br/>
+<div id="studentsList" style="display: none">
+    <h1>List of students:</h1>
+    <table style="width: 700px; border: solid 2px;" id="studentsTable">
+        <thead>
+        <tr>
+            <td style="width: 50px">Id</td>
+            <td style="width: 100px">First name</td>
+            <td style="width: 100px">Second name</td>
+            <td style="width: 100px">Middle name</td>
+            <td style="width: 100px">Date of birth</td>
+            <td style="width: 100px">Student group</td>
+        </tr>
+        </thead>
+        <tbody id="studentsStr">
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
