@@ -1,2 +1,3 @@
 rootProject.name = 'CMA_test'
+include '01-TextFileSearch'
 
