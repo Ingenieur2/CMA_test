@@ -3,4 +3,5 @@ rootProject.name = 'CMA_test'
 include '01-TextFileSearch'
 include '02-WorkWithDataBase'
 include '03-ClimbingTheLeaderboard'
+include '04-PersonAndCarSevice'
 
