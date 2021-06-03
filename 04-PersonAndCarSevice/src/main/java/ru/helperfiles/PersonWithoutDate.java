@@ -1,29 +1,19 @@
-package ru.package01.core.model;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
-import java.time.LocalDate;
+package ru.helperfiles;
 
 
-@Table("persons")
-public class Person {
-    @Id
-    @Column("id")
+public class PersonWithoutDate {
+
     private Long id;
-    @Column("name")
-    private String name;
-    @Column("birthdate")
-    private LocalDate birthDate;
 
-    public Person() {
+    private String name;
+
+    private String birthDate;
+
+    public PersonWithoutDate() {
 
     }
 
-    @PersistenceConstructor
-    public Person(Long id, String name, LocalDate birthDate) {
+    public PersonWithoutDate(Long id, String name, String birthDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -45,11 +35,11 @@ public class Person {
         this.name = name;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

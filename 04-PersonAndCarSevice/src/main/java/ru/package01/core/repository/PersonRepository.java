@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.package01.core.model.Person;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository

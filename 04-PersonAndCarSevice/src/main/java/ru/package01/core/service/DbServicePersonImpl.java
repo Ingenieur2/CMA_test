@@ -8,13 +8,12 @@ import ru.package01.core.model.Person;
 import ru.package01.core.repository.PersonRepository;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class DbServicePersonImpl implements DbServicePerson {
-    public static final String DATE_FORMAT = "dd-MM-yyyy";
+    public static final String DATE_FORMAT = "dd.MM.yyyy";
     private static final Logger logger = LoggerFactory.getLogger(DbServicePersonImpl.class);
 
     private final PersonRepository personRepository;
@@ -26,28 +25,26 @@ public class DbServicePersonImpl implements DbServicePerson {
     @Override
     public long savePerson(String personString) {
 //        Все поля удовлетворяют ограничениям на тип и формат
-
 //        Дата рождения в прошлом
 //        Дата рождения в нужном формате
 //        Ранее валидный объект с таким id не передавался
-
         try {
             Gson gson = new Gson();
             Person person = gson.fromJson(personString, Person.class);
-            if (!(person.getId() == 0)
-                    && (!personRepository.findById(person.getId()).isPresent())
+
+            if ((!(personRepository.findById(person.getId()).isPresent()))
                     && (!person.getName().equals(""))
-                    && (person.getBirthDate().toString().equals(""))
-                    && (LocalDate.now().isBefore(person.getBirthDate()))
-                    && (person.getBirthDate().toString().equals(person.getBirthDate().format(DateTimeFormatter.ofPattern(DATE_FORMAT))))
-
+                    && (!person.getBirthDate().toString().equals(""))
+                    && (LocalDate.now().isAfter(person.getBirthDate()))
+//                    && (person.getBirthDate().toString().equals(person.getBirthDate().format(DateTimeFormatter.ofPattern(DATE_FORMAT))))
             ) {
+                person.setId(null);
                 personRepository.save(person);
-                logger.info("created person:_____");
+                logger.info("created person:_____" + person);
+            } else {
+                person.setId(0L);
             }
-
             long personId = person.getId();
-            logger.info("created person: {}", personId);
             return personId;
         } catch (Exception e) {
             System.out.println("DID NOT CREATE PERSON");

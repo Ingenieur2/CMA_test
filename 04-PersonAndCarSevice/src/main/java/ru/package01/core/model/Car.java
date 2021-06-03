@@ -10,7 +10,7 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Car {
     @Id
     @Column("id")
-    private long id;
+    private Long id;
     @Column("model")
     private String model;
     @Column("horsepower")
@@ -18,23 +18,22 @@ public class Car {
     @Column("owner_id")
     private Long ownerId;
 
-
     public Car() {
     }
 
     @PersistenceConstructor
-    public Car(long id, String model, Integer horsepower, Long ownerId) {
+    public Car(Long id, String model, Integer horsepower, Long ownerId) {
         this.id = id;
         this.model = model;
         this.horsepower = horsepower;
         this.ownerId = ownerId;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

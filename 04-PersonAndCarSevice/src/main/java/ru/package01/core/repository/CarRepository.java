@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 public interface CarRepository extends CrudRepository<Car, Long> {
 
-    @Query("select * from \"cars\" where model = :model")
-    List<Car> findByModel(@Param("model") String model);
+    @Query("select distinct model from \"cars\"")
+    List<String> findByModel();
+
+    @Query("select * from \"cars\" where owner_id = :owner_id")
+    List<Car> findByOwnerId(@Param("owner_id") long owner_id);
 }

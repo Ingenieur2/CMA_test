@@ -5,20 +5,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.package01.core.service.DbServicePerson;
+import ru.package01.core.service.DbServiceCar;
 
 @RestController
-public class PersonController {
+public class CarController {
 
-    private final DbServicePerson dbServicePerson;
+    private final DbServiceCar dbServiceCar;
 
-    public PersonController(DbServicePerson dbServicePerson) {
-        this.dbServicePerson = dbServicePerson;
+    public CarController(DbServiceCar dbServiceCar) {
+        this.dbServiceCar = dbServiceCar;
     }
 
-    @PostMapping("/person")
-    public ResponseEntity<String> personSave(@RequestBody String personString) {
-        long id = dbServicePerson.savePerson(personString);
+    @PostMapping("/car")
+    public ResponseEntity<String> carSave(@RequestBody String carString) {
+        long id = dbServiceCar.saveCar(carString);
         if (id != 0) {
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
